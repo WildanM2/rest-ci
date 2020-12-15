@@ -116,7 +116,7 @@ class Rental extends RestController
     if($delete['status']) {
       $status=(int)$delete['data'];
       if ($status>0)
-      $this->response(['status'=>true,'msg'=> $id. ' data telah dihapus'], RestController::HTTP_OK);
+      $this->response(['status'=>true,'msg'=>'Mobil nomer '. $id. ' data telah dihapus'], RestController::HTTP_OK);
       else
       $this->response(['status'=>false, 'msg'=> 'Tidak ada data yang dihapus'], RestController::HTTP_BAD_REQUEST);
     } else {
