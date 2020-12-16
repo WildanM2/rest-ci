@@ -27,11 +27,12 @@ class Rental extends RestController
   {
     parent::__construct();
     $this->load->model('rental_model', 'rnt');
+    $this->methods['index_get']['limit'] = 2;
   }
 
   public function index_get()
   {
-    $id = $this->get('id');
+    $id = $this->get('id', true);
     if ($id === null){
       $p = $this->get('page');
       $p = (empty($p) ?  1 : $p);
@@ -67,11 +68,11 @@ class Rental extends RestController
   public function index_post()
   {
     $data = [
-      'No_mobil'=>$this->post('No_mobil'),
-      'No_polisi'=>$this->post('No_polisi'),
-      'Nama_mobil'=>$this->post('Nama_mobil'),
-      'Warna'=>$this->post('Warna'),
-      'Harga_sewa'=>$this->post('Harga_sewa')
+      'No_mobil'=>$this->post('No_mobil', true),
+      'No_polisi'=>$this->post('No_polisi', true),
+      'Nama_mobil'=>$this->post('Nama_mobil', true),
+      'Warna'=>$this->post('Warna', true),
+      'Harga_sewa'=>$this->post('Harga_sewa', true)
     ];
     $simpan=$this->rnt->add($data);
     if($simpan['status']){
@@ -84,13 +85,13 @@ class Rental extends RestController
   public function index_put()
   {
     $data = [
-      'No_mobil'=>$this->put('No_mobil'),
-      'No_polisi'=>$this->put('No_polisi'),
-      'Nama_mobil'=>$this->put('Nama_mobil'),
-      'Warna'=>$this->put('Warna'),
-      'Harga_sewa'=>$this->put('Harga_sewa')
+      'No_mobil'=>$this->put('No_mobil', true),
+      'No_polisi'=>$this->put('No_polisi', true),
+      'Nama_mobil'=>$this->put('Nama_mobil', true),
+      'Warna'=>$this->put('Warna', true),
+      'Harga_sewa'=>$this->put('Harga_sewa', true)
     ];
-    $id=$this->put('id');
+    $id=$this->put('id', true);
     if($id===null){
       $this->response(['status'=>false, 'msg'=> 'Masukkan Nomer Mobil yang akan dirubah'], RestController::HTTP_BAD_REQUEST);
     }
@@ -108,7 +109,7 @@ class Rental extends RestController
 
   public function index_delete()
   {
-    $id=$this->delete('id');
+    $id=$this->delete('id', true);
     if($id===null){
       $this->response(['status'=>false, 'msg'=> 'Masukkan Nomer Mobil yang akan dihapus'], RestController::HTTP_BAD_REQUEST);
     }
