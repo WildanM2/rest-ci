@@ -32,7 +32,7 @@ class Rental extends RestController
 
   public function index_get()
   {
-    $id = $this->get('id', true);
+    $id = $this->get('No_mobil', true);
     if ($id === null){
       $p = $this->get('page');
       $p = (empty($p) ?  1 : $p);
@@ -91,7 +91,7 @@ class Rental extends RestController
       'Warna'=>$this->put('Warna', true),
       'Harga_sewa'=>$this->put('Harga_sewa', true)
     ];
-    $id=$this->put('id', true);
+    $id=$this->put('No_mobil', true);
     if($id===null){
       $this->response(['status'=>false, 'msg'=> 'Masukkan Nomer Mobil yang akan dirubah'], RestController::HTTP_BAD_REQUEST);
     }
@@ -109,7 +109,7 @@ class Rental extends RestController
 
   public function index_delete()
   {
-    $id=$this->delete('id', true);
+    $id=$this->delete('No_mobil', true);
     if($id===null){
       $this->response(['status'=>false, 'msg'=> 'Masukkan Nomer Mobil yang akan dihapus'], RestController::HTTP_BAD_REQUEST);
     }

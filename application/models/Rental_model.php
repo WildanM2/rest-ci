@@ -31,7 +31,7 @@ class Rental_model extends CI_Model {
     {
      return $this->db->get('mobil', $limit, $offset)->result();
     } else{
-      return $this->db->get_where('mobil', ['Harga_sewa' => $id])->result_array();
+      return $this->db->get_where('mobil', ['No_mobil' => $id])->result_array();
     }
   }
 
